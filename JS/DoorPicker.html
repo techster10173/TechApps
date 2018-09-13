@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <script src="DoorPicker.js"></script>
+    <style>
+      #cont{
+        width: 40vw;
+        height: 40vh;
+        border:solid 1px black;
+      }
+      .door{
+        width: 10%;
+        height: 20%;
+        position: absolute;
+        margin-left: 5%;
+        top: 21%;
+      }
+    </style>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="cont">
+      <div class="door" id="first" onclick="checker('first')" style="background:red"></div>
+      <div class="door" id="second" onclick="checker('second')" style="background:blue; left:20%;"></div>
+    </div>
+    <div id="result">Pick A Door</div>
+    <button type="button" name="button" onclick="reset()">Reset</button>
+  </body>
+</html>
