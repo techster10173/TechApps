@@ -1,0 +1,95 @@
+html{
+  font-family: 'Raleway';
+  background: #9796f0;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #fbc7d4, #9796f0);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #fbc7d4, #9796f0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+height: 100vh;
+}
+img, .customBox, button{
+    display: block;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+}
+.customBox{
+  background:transparent;
+  border: none;
+  border-bottom: solid 2px gray;
+  font-size: 1.25rem;
+  width: 40%;
+}
+button{
+    background: rgba(0,0,0,0.25);
+    border-radius: 5px;
+    padding: 1.25%;
+    border: solid 2px rebeccapurple;
+cursor: pointer;
+}
+ul{
+  list-style: none;
+height: 10vh;
+}
+.topnav {
+overflow: hidden;
+background-color: white;
+}
+
+.topnav a {
+float: left;
+color: #f2f2f2;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
+}
+
+.topnav a:hover {
+background-color: #ddd;
+color: black;
+}
+
+.topnav a.active {
+background-color: #4CAF50;
+color: white;
+}
+.panel{
+position: relative;
+margin-left: auto;
+margin-right: auto;
+width: 50%;
+height:50vh;
+background: lightgray;
+}
+#logout{
+position: absolute;
+left: 0;
+bottom: 0;
+width: 100%;
+}
+#getter{
+float:left;
+font-size: 2em;
+width: 81%;
+}
+#sorter, #adder, #undo{
+float: right;background: white;color: mediumpurple;margin-top:0%;width: 6%;border-radius: 0;
+}
+ul li.checked {
+text-decoration: line-through;
+}
+li{
+margin-left: auto;
+margin-right: auto;
+width: 80%;
+background: white;
+padding: 0.5% 1%;
+margin-top: 2%;
+}
+#todoHolder{
+padding:0.2%;
+margin: 10px 0px;
+}
+input[type=checkbox]{
+float:right;
+}

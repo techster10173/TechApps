@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <title>Pagination</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <link href="Pagination.css" rel="stylesheet">
+    <script src="Pagination.js"></script>
+  </head>
+  <body>
+    <div id='first' class="page" style="display:block">
+      <img src="purplelogo.png">
+      <h1 style="text-align:center">Todo</h1>
+        <input id='userInput' class='customBox' type="text" placeholder="Username">
+        <button style="display:block" class="btn btn-secondary" onclick="getTasks()">Let's Go!</button>
+  </div>
+  <div id='second' class='page' style="display:none">
+    <div class="panel">
+      <div class="topnav">
+        <input type="text" id='getter'><button onclick="firstAppend(getter.value)" id='adder'><i class="fas fa-plus"></i></button><button onclick="sortList()" id='sorter'><i class="fas fa-sort"></i></button>
+        <button id='undo' class="btn btn-secondary" onclick="undo()"><i class="fas fa-undo"></i></button>
+      </div>
+      <ul id='todoHolder'>
+      </ul>
+      <button id='logout' class="btn btn-secondary" onclick='logout()'>Logout</button>
+    </div>
+  </div>
+</body>
+</html>
