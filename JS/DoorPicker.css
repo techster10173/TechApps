@@ -1,0 +1,12 @@
+#cont{
+	width: 40vw;
+	height: 40vh;
+	border:solid 1px black;
+  }
+.door{
+	width: 10%;
+	height: 20%;
+	position: absolute;
+	margin-left: 5%;
+	top: 21%;
+  }
