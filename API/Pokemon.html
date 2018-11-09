@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <div id="app" class="container-fluid">
+      Enter Pokenumber: <input type='number' name="" value="" id="pn">
+        <button v-on:click="update" class="btn btn-primary">Update</button>
+      <div class="card" style="width: 18rem;">
+  <img class="card-img-top" v-bind:src="picture" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">NAME</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      Types:
+      <ul>
+        <li v-for="type in types">{{type}}</li>
+      </ul>
+    </li>
+    <li class="list-group-item">
+      Stats:
+      <ul>
+        <li v-for="stat in stats">{{stat}}</li>
+      </ul>
+    </li>
+    <li class="list-group-item">
+      Abilites:
+      <ul>
+        <li v-for="ability in abilities">{{ability}}</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+    <script type="text/javascript">
+          function getPokemon(callback){
+            var number = document.getElementById('pn').value;
+            axios.get("https://pokeapi.co/api/v2/pokemon/"+number+"/")
+            .then(function (response){
+              callback(response.data);
+            }).catch(function (error){
+              //console.log(error);
+            })
+          }
+          var update = function(){
+            app.pokemon = "";
+            app.picture = "";
+            app.abilities = [];
+            app.types = [];
+            app.stats =  [];
+            getPokemon(function(data){
+              for(var i=0; i<data.abilities.length;i++){
+                  app.abilities.push(data.abilities[i].ability.name);
+              }
+              for(var i=0; i<data.types.length;i++){
+                  app.types.push(data.types[i].type.name);
+              }
+              for(var i=0; i<data.stats.length;i++){
+                  app.stats.push(data.stats[i].stat.name);
+              }
+              app.picture = data.sprites.front_default;
+            });
+          }
+          var app = new Vue({
+              el: '#app',
+              data: {
+                pokemon:'',
+                picture:'',
+                abilities: [],
+                types: [],
+                stats: []
+              },
+              methods:{
+                update:update
+              }
+          });
+
+    </script>
+  </body>
+</html>
