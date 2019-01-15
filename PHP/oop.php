@@ -90,10 +90,34 @@ must include a constructor that takes three parameters representing a sandwich,
 salad, and drink (in that order).
 */
 
+class Trio implements MenuItem{
+    private $sandwich,$drink,$salad;
 
+    public function __contruct($s,$d,$sa){
+        $this->sandwich = $s;
+        $this->salad = $sa;
+        $this->drink = $d;
+    }
 
+    public function getName(){
+        $sTemp = $this->sandwich->getName();
+        $saTemp = $this->salad->getName();
+        $dTemp = $this->drink->getName();
 
+        return  $sTemp . "/" . $saTemp . "/" . $dTemp . " Trio";
+    }
 
+    public function getPrice(){
+        $itemsArray = array($this->salad->getPrice(),$this->sandwich->getPrice(),$this->drink->getPrice());
+        rsort($itemsArray);
+        return $itemsArray[0]+$itemsArray[1];
+    }
+}
+
+$test = new Trio(new Sandwich("j", 50),new Drink("k", 20), new Salad("q",10));
+
+echo $test->getName();
+echo $test->getPrice();
 
 
 

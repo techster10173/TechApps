@@ -65,7 +65,7 @@ class HiddenWord{
             }
 
         }
-        print_r($returnArr);
+        echo implode("",$returnArr);
 }
 }
 
