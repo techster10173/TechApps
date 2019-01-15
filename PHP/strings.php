@@ -54,20 +54,18 @@ class HiddenWord{
         $returnArr = array();
 
         for($i = 0; $i < count($hintArr); $i++){
-            for($v = 0; $v < count($hintArr); $v++){
-                echo $hintArr[$i];
-                echo $wordArr[$v];
-                if($hintArr[$i] == $wordArr[$v]){
-                     $returnArr[$i] = "+";
+            if(in_array($hintArr[$i],$wordArr)){
+                if($hintArr[$i] == $wordArr[$i]){
+                    $returnArr[$i] = $hintArr[$i];
                 }else{
-                    $returnArr[$i] = "*";
+                    $returnArr[$i] = "+";
                 }
+            }else{
+                $returnArr[$i] = "*";
             }
-            if($hintArr[$i] == $wordArr[$i]){
-                $returnArr[$i] = $hintArr[$i];
-            }
-    }
-        //print_r($returnArr);
+
+        }
+        print_r($returnArr);
 }
 }
 
@@ -75,9 +73,9 @@ class HiddenWord{
 
 $puzzle = new HiddenWord("HARPS");
 
-$puzzle->getHint("AAAAA");
+//$puzzle->getHint("AAAAA");
 //$puzzle->getHint("HELLO");
- //$puzzle->getHint("HEART");
+$puzzle->getHint("HEART");
 //$puzzle->getHint("HARMS");
 //$puzzle->getHint("HARPS");
 
