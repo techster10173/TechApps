@@ -91,34 +91,34 @@ salad, and drink (in that order).
 */
 
 class Trio implements MenuItem{
-    private $sandwich,$drink,$salad;
+  private $sandwich;
+  private $salad;
+  private $drink;
 
-    public function __contruct($s,$d,$sa){
-        $this->sandwich = $s;
-        $this->salad = $sa;
-        $this->drink = $d;
+  public function __construct($s,$sl, $d){
+    $this->sandwich = $s;
+    $this->salad = $sl;
+    $this->drink = $d;
+  }
+  public function getName(){
+      return $this->sandwich->getName() . "/" . $this->salad->getName() . "/" . $this->drink->getName() . " Trio";
+
     }
 
-    public function getName(){
-        $sTemp = $this->sandwich->getName();
-        $saTemp = $this->salad->getName();
-        $dTemp = $this->drink->getName();
-
-        return  $sTemp . "/" . $saTemp . "/" . $dTemp . " Trio";
-    }
-
-    public function getPrice(){
-        $itemsArray = array($this->salad->getPrice(),$this->sandwich->getPrice(),$this->drink->getPrice());
-        rsort($itemsArray);
-        return $itemsArray[0]+$itemsArray[1];
-    }
+  public function getPrice(){
+        $sanTemp = $this->sandwich->getPrice();
+        $sTemp = $this->salad->getPrice();
+        $dTemp = $this->drink->getPrice();
+        $arr = array($sanTemp, $sTemp, $dTemp);
+        rsort($arr);
+        $ret = $arr[0]+ $arr[1];
+        return $ret;
+      }
 }
 
-$test = new Trio(new Sandwich("j", 50),new Drink("k", 20), new Salad("q",10));
-
+$test = new Trio(new Sandwich("Rueben", 2.75),new Salad("Fresh", 1.25), new Drink("Soda", 3.5));
 echo $test->getName();
 echo $test->getPrice();
-
 
 
 
