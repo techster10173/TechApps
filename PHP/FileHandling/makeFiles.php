@@ -17,6 +17,7 @@
         }
     }
     function startFile(){
+        //$fileName = "./RandomFiles/" . randYear() . "-" . randMonth() . trim(randWord()) . trim(randWord()) . ".txt";
         $fileName = randYear() . "-" . randMonth() . trim(randWord()) . trim(randWord()) . ".txt";
         var_dump($fileName);
 
