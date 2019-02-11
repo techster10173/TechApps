@@ -1,17 +1,3 @@
-<!doctype html>
+<?php  ?>
 
-<html>
-
-<head>
-
-<title><?php
-echo $title; ?></title>
-
-</head>
-
-<body>
-
-<div>
-
-This is
-</div>
+<h1 style="text-align: center; color: white;">Grandhe News</h1>
