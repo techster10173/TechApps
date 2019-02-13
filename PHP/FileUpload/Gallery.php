@@ -20,7 +20,7 @@ for ($i=0; $i<count($files); $i++) {
     //echo "it's working b";
     //print $image ."<br />";
     echo '<img src="'.$image .'"  />'."<br />";
-    echo '<button type="button" onclick = "deleteImage()" id= $image>Delete</button>';
+    echo '<button type="button" id= $image>Delete</button>';
     echo '<button type="button" id= $image>Rename</button>'."<br /><br />";
 }
 
