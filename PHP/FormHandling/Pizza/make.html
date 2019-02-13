@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Pizza</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <a href="cart.php">View cart</a>
+        <br><br>
+
+        <form class="w-50" method="post" action="makeHandler.php">
+            <label>Size</label>
+            <div >
+                <div >
+                    <input  type="radio" name="size" value="Small">
+                    <label >Small</label>
+                </div>
+                <div >
+                    <input  type="radio" name="size" value="Medium">
+                    <label >Medium</label>
+                </div>
+                <div >
+                    <input  type="radio" name="size" value="Large">
+                    <label >Large</label>
+                </div>
+                <div >
+                    <input  type="radio" name="size" value="XLarge">
+                    <label >XLarge</label>
+                </div>
+            </div>
+            <label>Amount of cheese</label>
+            <div >
+                <div >
+                    <input  type="radio" name="cheese" value="Normal">
+                    <label >Normal</label>
+                </div>
+                <div >
+                    <input  type="radio" name="cheese" value="Extra">
+                    <label >Extra</label>
+                </div>
+                <div >
+                    <input  type="radio" name="cheese" value="Light">
+                    <label >Light</label>
+                </div>
+                <div >
+                    <input  type="radio" name="cheese" value="Vegan">
+                    <label >Vegan</label>
+                </div>
+            </div>
+            <label>Amount of sauce</label>
+            <div >
+                <div >
+                    <input  type="radio" name="sauce" value="Normal">
+                    <label >Normal</label>
+                </div>
+                <div >
+                    <input  type="radio" name="sauce" value="Extra">
+                    <label >Extra</label>
+                </div>
+                <div >
+                    <input  type="radio" name="sauce" value="Light">
+                    <label >Light</label>
+                </div>
+            </div>
+            <label>Toppings</label>
+            <div >
+                <div >
+                    <input  type="radio" name="toppings" value="Mushroom">
+                    <label >Mushroom</label>
+                </div>
+                <div >
+                    <input  type="radio" name="toppings" value="Olive">
+                    <label >Olive</label>
+                </div>
+                <div >
+                    <input  type="radio" name="toppings" value="Pineapple">
+                    <label >Pineapple</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add to Cart</button>
+        </form>
+    </div>
+    <!-- <script>
+        $("form input").change(function() {
+            alert("Form changed");
+        });
+    </script> -->
+</body>
+
+</html>
