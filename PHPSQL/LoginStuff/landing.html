@@ -1,0 +1,43 @@
+<!doctype HTML>
+<html>
+
+<head>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div class="jumbotron" style="background: mediumpurple; color:white">
+		<h1 class="display-3" style="text-align: center">Welcome to Arora!</h1>
+		<h1 class="display-4" style="text-align: center; font-size: 2em">Please Login To Access Site</h1>
+		<div class="container-fluid" style="text-align: center">
+			<form class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1">@</span>
+				</div>
+				<input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+				<input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+				<button class="btn btn-secondary" type="submit" role="button">Login</button>
+			</form>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<h2 style="text-align: center; color: mediumpurple;">This is Arora. It works. It works better than the rest. Okay? Okay.</h2>
+		<img src="p.png" width="100%" />
+	</div>
+	<div class="container-fluid" style="margin-top: 10%;">
+		<h1 class="display-4" style="text-align: center; color: rebeccapurple">Sign Up Here</h1>
+		<form action="signuphandler.php" method="post">
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="basic-addon1" style="color:white;background-color: mediumpurple;">@</span>
+				</div>
+				<input type="text" size="3" title="Only allow alphanumeric and underscore" pattern="^[a-zA-Z0-9_]*$" maxlength="20" class="form-control" placeholder="Username" aria-label="Username" name="usern" aria-describedby="basic-addon1">
+				<input type="password" placeholder="Password" aria-label="First name" name="passw" class="form-control">
+				<button class="btn btn-secondary" type="submit" role="button">Sign Up</button>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>
