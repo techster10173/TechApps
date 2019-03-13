@@ -11,12 +11,12 @@
 		<h1 class="display-3" style="text-align: center">Welcome to Arora!</h1>
 		<h1 class="display-4" style="text-align: center; font-size: 2em">Please Login To Access Site</h1>
 		<div class="container-fluid" style="text-align: center">
-			<form class="input-group mb-3">
+			<form action="login.php" method="post" class="input-group mb-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text" id="basic-addon1">@</span>
 				</div>
-				<input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-				<input type="password" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+				<input type="text" class="form-control" placeholder="Username" aria-label="Username" name="userna" aria-describedby="basic-addon1">
+				<input type="password" class="form-control" placeholder="Password" aria-label="Username" name="passwo" aria-describedby="basic-addon1">
 				<button class="btn btn-secondary" type="submit" role="button">Login</button>
 			</form>
 		</div>
@@ -39,5 +39,4 @@
 		</form>
 	</div>
 </body>
-
 </html>

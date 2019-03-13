@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $server = "localhost";
 $user = "root";
 $pass = "usbw";
@@ -9,6 +11,7 @@ $username = $_POST["userna"];
 $password = $_POST["passwo"];
 
 
+
 $conn = new mysqli($server, $user, $pass, $db);
 
 if($conn->connect_error)
@@ -16,17 +19,16 @@ if($conn->connect_error)
     die("Connection Failed: " . $conn->connect_error);
 }
 
-recordExists();
+        $stmt = $conn->prepare("SELECT username FROM users WHERE username=? AND password=?");
+        $stmt->bind_param("ss", $username, $password);
+        $stmt->execute();
+        $stmt->store_result();
 
-function recordExists() {
-        $query = "SELECT username,password FROM `users` WHERE $username=username AND $password=password";
-        $result = $conn->query($query);
-        if($result->num_rows > 0) {
+        if(($stmt->num_rows) > 0) {
             header("Location:home.php");
+            $_SESSION["kyahaiuser"] = $username;
         }else{
-            console.log("false");
+            echo "<script type='text/javascript'>alert('Oops your username or password might be wrong...Try Again?');window.location='landing.html';</script>";
         }
-         // No record found
-}
 
  ?>
