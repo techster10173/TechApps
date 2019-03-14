@@ -27,57 +27,53 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Create Tweet!</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form>
-            
+        <form action="makeTweet.php" method="post">
+            <div class="form-group">
+                <textarea name="tweetMaker" class="form-control"></textarea>
+            </div>
+            <button class="btn btn-primary float-right" type="submit">Create</button>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Democrat</th>
-      <th scope="col">Neutral</th>
-      <th scope="col">Republican</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-  <div class="card-header">New Tariff</div>
-  <div class="card-body">
-    <h5 class="card-title">Article 1</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	  <a href="#" style="color: white">Open Article</a>
-  </div>
-</div></td>
-		<td><div class="card bg-light mb-3" style="max-width: 18rem;">
-  <div class="card-header">New Tariff</div>
-  <div class="card-body">
-    <h5 class="card-title">Article 2</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	  	  <a href="#" style="color: black">Open Article</a>
-  </div>
-</div></td>
-      <td><div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-  <div class="card-header">New Tariff</div>
-  <div class="card-body">
-    <h5 class="card-title">Article 3</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-	  	  <a href="#" style="color: white">Open Article</a>
-  </div>
-</div></td>
-    </tr>
-  </tbody>
-</table>
+<?php
+
+$server = "localhost";
+
+$user = "root";
+
+$pass = "usbw";
+
+$db = "loginassignment";
+
+$conn = new mysqli($server, $user, $pass, $db);
+// connect to MySQL server
+
+if($conn->connect_error) // check if connection failed
+{
+    die("Connection Failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT tweets.id,users.username,tweets.content,tweets.timer FROM tweets INNER JOIN users ON tweets.userid=users.id";
+// this is just a string
+
+$result = $conn->query($sql);
+date_default_timezone_set('UTC');
+while($row = $result->fetch_assoc()){
+    echo "<div class='card text-white bg-primary mb-5' style='max-width: 18rem;'>";
+    echo "<div class='card-header'><a style='color:white' href='user.php?name=" . $row["username"] . "'>" . "@" . $row["username"] . "</a></div>";
+    echo "<div class='card-body'>";
+    echo "<h5 class='card-title'>" . $row["content"] . "</h5>";
+    echo "<p>" . date($row["timer"]) . "</p>";
+    echo "<a style='color:white' href='tweets.php?id=" . $row["id"] . "'>See Full</a>";
+    echo "</div></div>";
+}
+
+?>
