@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20160913-225446">
+  <project autorefresh="false" main="RunAll" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="RunAll.java" package="" timestamp="26-Mar-2019 10:17:38">
+        <select from="457" to="457"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="RunServer.java" package="" timestamp="26-Mar-2019 10:10:05">
+        <select from="457" to="457"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="RunRandomAI.java" package="" timestamp="26-Mar-2019 10:10:05">
+        <select from="457" to="457"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="RunMyAI.java" package="" timestamp="26-Mar-2019 10:10:05">
+        <select from="457" to="457"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="RandomAIClientListener.java" package="" timestamp="26-Mar-2019 10:10:05">
+        <select from="457" to="457"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="MyAIClientListener.java" package="" timestamp="26-Mar-2019 10:10:05">
+        <select from="457" to="457"/>
+        <scroll column="0" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath>
+      <file absolute="false" name="mayflower3.3.0.jar"/>
+      <file absolute="false" name="netgame.jar"/>
+      <file absolute="false" name="AmazonsAndArrows.jar"/>
+    </classpath>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>
