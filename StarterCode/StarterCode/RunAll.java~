@@ -1,4 +1,4 @@
-public class RunAllq {
+public class RunAll {
 
  public static void main(String[] args)
  {
@@ -9,7 +9,7 @@ public class RunAllq {
   AmazonsClient clientA = new AmazonsClient();
   AmazonsClient clientB = new AmazonsClient();
   
-  clientA.registerListener(new MyAIClientListener("ClientA"));
+  clientA.registerListener(new MyAIClientListener());
   clientA.registerListener(new GUIListener());
   
   clientB.registerListener(new RandomAIClientListener("ClientB"));
