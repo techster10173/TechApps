@@ -3,6 +3,19 @@
     if($_SESSION["kyahaiuser"] == ""){
         header("Location:landing.html");
     }
+    $server = "localhost";
+    $user = "root";
+    $pass = "usbw";
+    $db = "loginassignment";
+
+    $conn = new mysqli($server, $user, $pass, $db);
+    // connect to MySQL server
+
+    if($conn->connect_error) // check if connection failed
+    {
+        die("Connection Failed: " . $conn->connect_error);
+    }
+
 ?>
 <head>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -15,12 +28,32 @@
   <form class="form-inline">
       <a class="navbar-brand">Thank you for logging in
           <?php
-                echo $_SESSION["kyahaiuser"];
+                echo "@" . $_SESSION["kyahaiuser"];
           ?>
       </a>
-    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" type="button">Make Tweet</a>
-    <a href="logout.php"><button class="btn btn-outline-success" type="button">Logout</button></a>
+    <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" type="button">Make Tweet</button>
+    <?php
+        echo "<a href='following.php'><button type='button' class='btn btn-secondary'>";
+        $sql = "SELECT COUNT(followers.followee) FROM followers WHERE followers.followee!=" . $_SESSION["myID"];
+        $result = $conn->query($sql);
 
+        while($row = $result->fetch_array()){
+            echo $row[0];
+        }
+
+        echo " Following</button></a>";
+
+        echo "<a href='followers.php'><button type='button' class='btn btn-secondary'>";
+        $sql = "SELECT COUNT(followers.followee) FROM followers WHERE followers.followee=" . $_SESSION["myID"];
+        $result = $conn->query($sql);
+
+        while($row = $result->fetch_array()){
+            echo $row[0];
+        }
+
+        echo " Followers</button></a>";
+    ?>
+    <a href="logout.php"><button class="btn btn-outline-success" type="button">Logout</button></a>
   </form>
 </nav>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -43,25 +76,9 @@
     </div>
   </div>
 </div>
+<div class="card-deck">
 <?php
-
-$server = "localhost";
-
-$user = "root";
-
-$pass = "usbw";
-
-$db = "loginassignment";
-
-$conn = new mysqli($server, $user, $pass, $db);
-// connect to MySQL server
-
-if($conn->connect_error) // check if connection failed
-{
-    die("Connection Failed: " . $conn->connect_error);
-}
-
-$sql = "SELECT tweets.id,users.username,tweets.content,tweets.timer FROM tweets INNER JOIN users ON tweets.userid=users.id";
+$sql = "SELECT tweets.id,users.username,tweets.content,tweets.timer FROM tweets INNER JOIN users ON tweets.userid=users.id INNER JOIN followers ON users.id=followers.followee";
 // this is just a string
 
 $result = $conn->query($sql);
@@ -77,3 +94,4 @@ while($row = $result->fetch_assoc()){
 }
 
 ?>
+</div>

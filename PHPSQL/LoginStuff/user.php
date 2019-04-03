@@ -8,28 +8,64 @@
 <nav class="navbar navbar-light bg-light justify-content-between">
   <form class="form-inline">
       <a class="navbar-brand">
-          <?php echo "@" . $_GET["name"] ?>
+          <?php
+          $uname = $_GET["name"];
+
+          $server = "localhost";
+
+          $user = "root";
+
+          $pass = "usbw";
+
+          $db = "loginassignment";
+
+          $conn = new mysqli($server, $user, $pass, $db);
+          // connect to MySQL server
+
+          if($conn->connect_error) // check if connection failed
+          {
+              die("Connection Failed: " . $conn->connect_error);
+          }
+          session_start();
+          echo "@" . $_GET["name"];
+          $_SESSION["dude"] = $_GET["name"];
+
+          $pql = "SELECT id FROM users WHERE username='" . $_GET["name"]."'";
+          $besult=$conn->query($pql);
+          $temp;
+
+          while($row = $besult->fetch_assoc()){
+              $temp = $row["id"];
+          }
+
+          echo "<button type='button' class='btn btn-secondary'>";
+          $sql = "SELECT COUNT(followers.followee) FROM followers WHERE followers.followee!=" . $temp;
+          $result = $conn->query($sql);
+
+          while($row = $result->fetch_array()){
+              echo $row[0];
+          }
+
+          echo " Following</button>";
+
+          echo "<button type='button' class='btn btn-secondary'>";
+          $sql = "SELECT COUNT(followers.followee) FROM followers WHERE followers.followee=" . $temp;
+          $result = $conn->query($sql);
+
+          while($row = $result->fetch_array()){
+              echo $row[0];
+          }
+
+          echo " Followers</button>";
+          ?>
       </a>
   </form>
+  <form action="follow.php" method="post">
+        <button type="submit" class="btn btn-primary">Follow</button>
+  </form>
 </nav>
+<div class="card-deck">
 <?php
-$uname = $_GET["name"];
-
-$server = "localhost";
-
-$user = "root";
-
-$pass = "usbw";
-
-$db = "loginassignment";
-
-$conn = new mysqli($server, $user, $pass, $db);
-// connect to MySQL server
-
-if($conn->connect_error) // check if connection failed
-{
-    die("Connection Failed: " . $conn->connect_error);
-}
 
 $stmt=$conn->prepare("SELECT users.username,tweets.content,tweets.timer FROM tweets INNER JOIN users ON tweets.userid=users.id WHERE users.username = ?");
 $stmt->bind_param("s", $uname);
@@ -48,3 +84,4 @@ while($row = $result->fetch_assoc()){
 
 
 ?>
+</div>
