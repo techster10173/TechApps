@@ -63,6 +63,9 @@
   <form action="follow.php" method="post">
         <button type="submit" class="btn btn-primary">Follow</button>
   </form>
+  <form action="unfollow.php" method="post">
+        <button type="submit" class="btn btn-primary">UnFollow</button>
+  </form>
 </nav>
 <div class="card-deck">
 <?php
