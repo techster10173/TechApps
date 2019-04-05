@@ -18,8 +18,8 @@ public class RunMyAI {
 			System.out.println("Connecting to "+ip+" on port " + port);
 			
 			AmazonsClient clientA = new AmazonsClient();
-			clientA.registerListener(new MyAIClientListener());
-			clientA.registerListener(new GUIListener());
+			clientA.registerListener(new MyAIClientListener("Client A"));
+//			clientA.registerListener(new GUIListener());
 			
 			clientA.connect(ip, port);
 		}

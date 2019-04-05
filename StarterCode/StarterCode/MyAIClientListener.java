@@ -1,9 +1,14 @@
 import netgame.client.Client;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class MyAIClientListener extends AIClientListener {
 
-    public MyAIClientListener() {
-
+    public MyAIClientListener(String name) {
+        super(name);
     }
 
     @Override
@@ -12,6 +17,7 @@ public class MyAIClientListener extends AIClientListener {
         //request it from the server
         AmazonsState state = rules.getState();
         List<String> moves = new LinkedList<>();
+        ArrayList<Integer> list = new ArrayList<Integer>();
 
         for (Point piece : state.getPieces(this.getMyPlayerNumber())) {
             if (null == piece) {
@@ -26,6 +32,7 @@ public class MyAIClientListener extends AIClientListener {
                     for (int shootX = 0; shootX < 10; shootX++) {
                         for (int shootY = 0; shootY < 10; shootY++) {
                             if (rules.canMove(fromX, fromY, toX, toY, shootX, shootY)) {
+                                list.add(getScore(toX, toY, fromX, fromY));
                                 moves.add(fromX + C.SPACE + fromY + C.SPACE + toX + C.SPACE + toY + C.SPACE + shootX + C.SPACE + shootY);
                             }
                         }
@@ -35,13 +42,21 @@ public class MyAIClientListener extends AIClientListener {
         }
 
         //pick a random move
-        Collections.shuffle(moves);
-        client.send(C.MOVE + C.SPACE + moves.get(0));
+        client.send(C.MOVE + C.SPACE + moves.get(getHighestScoreIndex(list)));
     }
 
-    public int score(){
-        int score = 0;
-        if()
+    public Integer getScore(int x, int y, int fx, int fy){
+        return Math.abs((fx-x)*(fy-y));
+    }
+    public int getHighestScoreIndex(ArrayList<Integer> temp){
+        if ( temp == null || temp.size() == 0 ) return -1; // null or empty
+
+        int largest = 0;
+        for ( int i = 1; i < temp.size(); i++ )
+        {
+            if ( temp.get(i) > temp.get(largest)) largest = i;
+        }
+        return largest; // position of the first largest found
     }
 
     @Override
